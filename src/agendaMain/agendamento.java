@@ -1,18 +1,34 @@
 package agendaMain;
 import compromissos.interfaceAgendamento;
-import regras.tipoAgendamento;
-import regras.tipoConsulta;
+import regras.TipoAgendamento;
+import regras.TipoConsulta;
 
 public class agendamento implements interfaceAgendamento {
-
+	String msg;
 	@Override
-	public void adicionarDados(String[] dados, tipoAgendamento TipoAgendamento) {
-		// implementar métodos para adicioanr
+	public void adicionarDados(TipoAgendamento tipoAgendamento) {
+		switch (tipoAgendamento) {
+		case EVENTO:
+			
+			break;
+
+		case LEMBRENTE:
+
+			break;
+
+		case REUNIAO:
+
+			break;
+
+
+		default:
+			break;
+		}
 		
 	}
 
 	@Override
-	public void consultarDados(String[] dados, tipoConsulta TipoConsulta) {
+	public void consultarDados(TipoConsulta tipoConsulta) {
 		// implementar métodos para consultar
 		
 	}

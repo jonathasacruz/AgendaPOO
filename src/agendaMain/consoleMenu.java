@@ -1,19 +1,35 @@
 package agendaMain;
+import java.util.Scanner;
 
 public class consoleMenu implements InterfaceUsuario {
+	static Scanner sc = new Scanner(System.in);
+	int i=0;
 
 	@Override
-	public void ConstruirMenu(String[] opcoesMenu) {
-		
-			for (int i=0;i<opcoesMenu.length;i++) {
-				System.out.println(opcoesMenu[i]);
-				
-		}
-		
-	}
+	public int ConstruirMenu(String[] opcoesMenu) {
+		System.out.println(
+				  "=================================================\n" 
+				+ "|     _     ____  _____  _   _  ____     _      |\r\n" 
+				+ "|    / \\   / ___|| ____|| \\ | ||  _ \\   / \\     |\r\n"
+				+ "|   / _ \\ | |  _ |  _|  |  \\| || | | | / _ \\    |\r\n"
+				+ "|  / ___ \\| |_| || |___ | |\\  || |_| |/ ___ \\   |\r\n"
+				+ "| /_/   \\_\\\\____||_____||_| \\_||____//_/   \\_\\  |\r\n"
+				+ "|                                               |\n"	
+				+ "=================================================\n");
+		for (i=0;i<opcoesMenu.length;i++) {
+			System.out.println((i+1)+". "+opcoesMenu[i]);
 
-	// N�O SEI SE PRECISA DE UM M�TODO PARA CADA MENU
+		}
+		System.out.println("0. Sair\n\n"
+				+"Informe a opção desejada: ");
+		int opcao = sc.nextInt();
+		sc.reset();
+		return opcao;
 	
+	}
+	
+	
+
 	/*
 	@Override
 	public void ConstruirMenuPrincipal(String[] opcoesMenuPrincipal) {
@@ -21,12 +37,12 @@ public class consoleMenu implements InterfaceUsuario {
 			System.out.println(opcoesMenuPrincipal[i]);
 
 		}
-	}
+	}*/
 
 	@Override
 	public void exibirMensagem(String msg, Mensagem mensagem) {
 		if (mensagem == Mensagem.AVISO) {
-			System.out.println("ATEN��O");
+			System.out.println("ATENÇÃO");
 		} else if (mensagem == Mensagem.ERRO) {
 			System.out.println("ERRO");
 		}
@@ -36,16 +52,30 @@ public class consoleMenu implements InterfaceUsuario {
 	}
 
 	@Override
-	public void ConstruirMenuAgendamento(String[] opcoesMenuAgendamento) {
-		for (int i = 0; i < opcoesMenuAgendamento.length; i++) {
-			System.out.println(opcoesMenuAgendamento[i]);
+	public int ConstruirMenuAgendamento(String[] opcoesMenuAgendamento) {
+		System.out.println("=================================================\n"+
+				"              Agendar Compromisso                 \n"+
+				"=================================================n"+
+				"Informe o tipo do compromisso:");
+		
+		for (i = 0; i < opcoesMenuAgendamento.length; i++) {
+			System.out.println((i+1)+". "+opcoesMenuAgendamento[i]);
 
 		}
+		
+		System.out.println("0. Sair\n\n"
+				+"Informe a opção desejada: ");
+		int opcao = sc.nextInt();
+		sc.reset();
+		return opcao;
 
 	}
 
 	@Override
 	public void ConstruirMenuConsulta(String[] opcoesMenuConsulta) {
+		
+		
+		
 		for (int i = 0; i < opcoesMenuConsulta.length; i++) {
 			System.out.println(opcoesMenuConsulta[i]);
 
@@ -66,6 +96,16 @@ public class consoleMenu implements InterfaceUsuario {
 		for (int i = 0; i < opcoesMenuCancelar.length; i++) {
 			System.out.println(opcoesMenuCancelar[i]);
 		}
-		*/
+
 	}
+
+	@Override
+	public String EntradaDeDados() {
+		return null;
+
+
+
+	}
+}
+
 
