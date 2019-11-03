@@ -1,3 +1,4 @@
+package agendaMain;
 import java.util.Scanner;
 
 public class Agenda {
@@ -25,7 +26,7 @@ public class Agenda {
 					"1. Agendar Compromisso", "2. Consultar Compromisso", "3. Listar Compromissos",
 					"4. Cancelar Compromisso", "0. Sair", 
 					"                      ", 
-					"Informe a opção desejada: " };
+					"Informe a opï¿½ï¿½o desejada: " };
 
 			menuPrincipal.ConstruirMenu(opcoesMenuPrincipal);
 			opcao = sc.nextInt();
@@ -53,13 +54,13 @@ public class Agenda {
 											   "              Agendar Compromisso                 ",
 											   	"=================================================", 
 											   	"Informe o tipo do compromisso:",
-											   	"1. Reunião   ", "2. Lembrete  ", "3. Evento    ", "4. Outro tipo ",
+											   	"1. Reuniï¿½o   ", "2. Lembrete  ", "3. Evento    ", "4. Outro tipo ",
 												"5. Voltar ao menu principal" };
 			menuAgendamento.ConstruirMenu(opcoesMenuAgendamento);
 			opcao = sc.nextInt();
 			switch (opcao){
 			case 1:
-				// construir submenu e chamar os métodos necessários para cadastrar compromisso
+				// construir submenu e chamar os mï¿½todos necessï¿½rios para cadastrar compromisso
 			case 2:
 				// cadastrarLembrete();
 			case 3:
@@ -82,14 +83,14 @@ public class Agenda {
 										    "             Consultar Compromisso                ",
 										    "=================================================", 
 										    "Como deseja consultar?", 
-										    "1. Por Data   ", "2. Pela prioridade  ", "3. Pela Descrição    ", 
+										    "1. Por Data   ", "2. Pela prioridade  ", "3. Pela Descriï¿½ï¿½o    ", 
 										    "4. Voltar ao menu principal" };
 			menuConsulta.ConstruirMenu(opcoesMenuConsulta);
 			opcao = sc.nextInt();
 			
 			switch (opcao){
 			case 1:
-				// construir submenu e chamar os métodos necessários para consultar compromisso
+				// construir submenu e chamar os mï¿½todos necessï¿½rios para consultar compromisso
 			case 2:
 				
 			case 3:
@@ -138,7 +139,7 @@ public class Agenda {
 			menuCancelar.ConstruirMenu(opcoesMenuCancelar);
 			
 			// CancelarCompromisso();
-			// informar código de identificação do compromisso a ser cancelado
+			// informar cï¿½digo de identificaï¿½ï¿½o do compromisso a ser cancelado
 			
 			opcao = sc.nextInt();
 		} while (opcao != 0);

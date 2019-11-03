@@ -1,4 +1,4 @@
-package agenda;
+package classesAux;
 
 public class Endereco {
 	private String descricao;

@@ -1,4 +1,6 @@
-package reuniao;
+package repositorio;
+import compromissos.Reuniao;
+import compromissos.interfaceReuniao;
 
 public class RepositorioReuniaoList implements interfaceReuniao{
 

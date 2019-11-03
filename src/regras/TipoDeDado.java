@@ -1,4 +1,4 @@
-package agenda;
+package regras;
 
 public enum TipoDeDado {
 

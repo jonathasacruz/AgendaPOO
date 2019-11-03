@@ -1,5 +1,4 @@
-package reuniao;
-
+package compromissos;
 public interface interfaceReuniao {
 		public boolean inserirReuniao(Reuniao reuniao);
 		public boolean excluirReuniao(Reuniao reuniao);

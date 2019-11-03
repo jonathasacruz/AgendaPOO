@@ -1,5 +1,4 @@
-package agenda;
-
-public class Lembrete {
-
+package compromissos;
+public class Lembrete extends CompromissoGeral{
+	
 }

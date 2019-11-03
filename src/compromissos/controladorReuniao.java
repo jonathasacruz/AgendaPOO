@@ -1,4 +1,5 @@
-package reuniao;
+package compromissos;
+import repositorio.RepositorioReuniaoList;
 
 public class controladorReuniao {
 	private interfaceReuniao repositorio;

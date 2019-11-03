@@ -1,4 +1,4 @@
-package agenda;
+package compromissos;
 
 public class FacadeAgenda {
 
