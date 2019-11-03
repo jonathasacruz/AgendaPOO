@@ -4,9 +4,9 @@ import regras.TipoConsulta;
 
 public interface interfaceAgendamento {
 	
-	public void adicionarDados( String dados[], TipoAgendamento TipoAgendamento);
-	public void consultarDados( String dados[], TipoConsulta TipoConsulta);
-	public void editar(int selecao[]);
-	public void excluir (int selecao[]);
-
+	public void adicionarDados (TipoAgendamento tipoAgendamento);
+	public void consultarDados(TipoConsulta tipoConsulta);
+	public void editar(int[] selecao);
+	public void excluir(int[] selecao);
+	
 }
