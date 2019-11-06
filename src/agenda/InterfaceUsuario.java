@@ -1,10 +1,10 @@
-
+package agenda;
 
 public interface InterfaceUsuario {
 	
 	public void ConstruirMenu (String opcoesMenu[]);
 	
-	// NÃO SEI SE PRECISA DE UM MÉTODO PARA CADA MENU
+	// Nï¿½O SEI SE PRECISA DE UM Mï¿½TODO PARA CADA MENU
 	
 	/*public void ConstruirMenuAgendamento (String opcoesMenuAgendamento[]);
 	public void ConstruirMenuConsulta (String opcoesMenuConsulta[]);

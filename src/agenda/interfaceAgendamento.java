@@ -1,4 +1,4 @@
-
+package agenda;
 public interface interfaceAgendamento {
 	
 	public void adicionarDados( String dados[], tipoAgendamento TipoAgendamento);

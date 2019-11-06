@@ -1,26 +1,26 @@
-
+package agenda;
 public class agendamento implements interfaceAgendamento {
 
 	@Override
 	public void adicionarDados(String[] dados, tipoAgendamento TipoAgendamento) {
-		// implementar métodos para adicioanr
+		// implementar mï¿½todos para adicioanr
 		
 	}
 
 	@Override
 	public void consultarDados(String[] dados, tipoConsulta TipoConsulta) {
-		// implementar métodos para consultar
+		// implementar mï¿½todos para consultar
 		
 	}
 
 	@Override
 	public void editar(int[] selecao) {
-		// implementar métodos para editar
+		// implementar mï¿½todos para editar
 	}
 
 	@Override
 	public void excluir(int[] selecao) {
-		// implementar métodos para excluir
+		// implementar mï¿½todos para excluir
 		
 	}
 

@@ -6,8 +6,6 @@ public class controladorReuniao {
 	public void inserirReuniao(Reuniao reuniao) {
 		
 	}
-	
-	public void
 
 	public controladorReuniao() {
 		repositorio = new RepositorioReuniaoList();

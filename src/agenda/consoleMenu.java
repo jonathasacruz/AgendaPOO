@@ -1,4 +1,4 @@
-
+package agenda;
 public class consoleMenu implements InterfaceUsuario {
 
 	@Override
@@ -11,7 +11,7 @@ public class consoleMenu implements InterfaceUsuario {
 		
 	}
 
-	// NÃO SEI SE PRECISA DE UM MÉTODO PARA CADA MENU
+	// Nï¿½O SEI SE PRECISA DE UM Mï¿½TODO PARA CADA MENU
 	
 	/*
 	@Override
@@ -25,7 +25,7 @@ public class consoleMenu implements InterfaceUsuario {
 	@Override
 	public void exibirMensagem(String msg, Mensagem mensagem) {
 		if (mensagem == Mensagem.AVISO) {
-			System.out.println("ATENÇÃO");
+			System.out.println("ATENï¿½ï¿½O");
 		} else if (mensagem == Mensagem.ERRO) {
 			System.out.println("ERRO");
 		}
