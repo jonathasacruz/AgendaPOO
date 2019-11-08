@@ -1,12 +1,11 @@
-package compromissos;
-import classesAux.Calendario;
-import classesAux.Endereco;
-import classesAux.Contato;
+package entidade;
 
-public class Evento extends CompromissoGeral{
+public class Reuniao extends CompromissoGeral {
 	Calendario dataHoraFim;
 	Endereco local;
+	//Contato[] participantesObrigatorios;
 	Contato[] participantes;
+	Contato coordenador;
 	public Calendario getDataHoraFim() {
 		return dataHoraFim;
 	}
@@ -25,5 +24,12 @@ public class Evento extends CompromissoGeral{
 	public void setParticipantes(Contato[] participantes) {
 		this.participantes = participantes;
 	}
+	public Contato getCoordenador() {
+		return coordenador;
+	}
+	public void setCoordenador(Contato coordenador) {
+		this.coordenador = coordenador;
+	}
+	
 	
 }

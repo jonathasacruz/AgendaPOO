@@ -1,5 +1,6 @@
-package agendaMain;
+package interfaces;
 
+import application.Mensagem;
 
 public interface InterfaceUsuario {
 	

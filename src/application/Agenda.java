@@ -1,5 +1,7 @@
-package agendaMain;
+package application;
 import java.util.Scanner;
+
+import interfaces.InterfaceUsuario;
 
 public class Agenda {
 
@@ -82,7 +84,7 @@ public class Agenda {
 
 			}
 
-		} while (opcao != );
+		} while (opcao != 0);
 
 		MenuPrincipal();
 

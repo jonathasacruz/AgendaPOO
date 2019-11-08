@@ -1,5 +1,7 @@
-package agendaMain;
+package application;
 import java.util.Scanner;
+
+import interfaces.InterfaceUsuario;
 
 public class consoleMenu implements InterfaceUsuario {
 	static Scanner sc = new Scanner(System.in);

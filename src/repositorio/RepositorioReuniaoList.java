@@ -1,8 +1,8 @@
 package repositorio;
-import compromissos.Reuniao;
-import compromissos.interfaceReuniao;
+import entidade.Reuniao;
+import interfaces.InterfaceRepositorio;
 
-public class RepositorioReuniaoList implements interfaceReuniao{
+public class RepositorioReuniaoList implements InterfaceRepositorio{
 
 	@Override
 	public boolean inserirReuniao(Reuniao reuniao) {

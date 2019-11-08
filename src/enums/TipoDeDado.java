@@ -1,4 +1,4 @@
-package regras;
+package enums;
 
 public enum TipoDeDado {
 

@@ -1,7 +1,6 @@
-package compromissos;
+package entidade;
 
-import classesAux.Calendario;
-import regras.TipoPrioridade;
+import enums.TipoPrioridade;
 
 abstract class CompromissoGeral {
 	Calendario dataHoraInicio;

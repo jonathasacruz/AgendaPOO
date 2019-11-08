@@ -1,4 +1,4 @@
-package classesAux;
+package entidade;
 
 public class Endereco {
 	private String descricao;
