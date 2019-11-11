@@ -1,8 +1,7 @@
 package agenda;
-
 import java.util.Scanner;
 
-public class Agenda {
+public class agendaMain {
 
 	static Scanner sc = new Scanner(System.in);
 	static int opcao;
