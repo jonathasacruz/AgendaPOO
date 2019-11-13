@@ -1,11 +1,12 @@
 package interfaces;
 
-import entidade.Reuniao;
+import agenda.tipoConsulta;
+import entidade.*;
 
 public interface InterfaceRepositorio {
-		public boolean inserirReuniao(Reuniao reuniao);
-		public boolean excluirReuniao(Reuniao reuniao);
-		public Reuniao consultarReuniao(Reuniao reuniao);
-		public boolean alterarReuniao(Reuniao reuniao);
+		public boolean inserirCompromisso(CompromissoGeral compromisso);
+		public boolean excluirCompromisso(int id);
+		public CompromissoGeral[] consultarReuniao(tipoConsulta tipoConsulta, String parametro);
+		public boolean alterarReuniao(int id);
 		
 	}

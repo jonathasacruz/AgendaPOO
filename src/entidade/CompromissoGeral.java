@@ -2,7 +2,7 @@ package entidade;
 
 import enums.TipoPrioridade;
 
-abstract class CompromissoGeral {
+public abstract class CompromissoGeral {
 	Calendario dataHoraInicio;
 	Calendario alarme;
 	String assunto;

@@ -1,7 +1,9 @@
 package application;
 import java.util.Scanner;
 
+import entidade.*;
 import interfaces.InterfaceUsuario;
+import repositorio.RepositorioReuniaoList;
 
 public class Agenda {
 
@@ -9,7 +11,14 @@ public class Agenda {
 	private static InterfaceUsuario menuPrincipal = new consoleMenu();
 	
 	public static void main(String[] args) {
-		MenuPrincipal();
+	//	MenuPrincipal();
+		CompromissoGeral e = new Evento();//Excluir
+		RepositorioReuniaoList.getInstance().inserirCompromisso(e); //Excluir
+		CompromissoGeral l = new Lembrete();//Excluir
+		RepositorioReuniaoList.getInstance().inserirCompromisso(l); //Excluir
+		CompromissoGeral r = new Reuniao();//Excluir
+		RepositorioReuniaoList.getInstance().inserirCompromisso(r); //Excluir
+		
 	}
 
 	private static void MenuPrincipal() {
