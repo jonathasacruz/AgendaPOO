@@ -1,6 +1,7 @@
 package application;
 import java.util.Scanner;
 
+import agenda.tipoConsulta;
 import entidade.*;
 import interfaces.InterfaceUsuario;
 import repositorio.RepositorioReuniaoList;
@@ -12,13 +13,22 @@ public class Agenda {
 	
 	public static void main(String[] args) {
 	//	MenuPrincipal();
-		CompromissoGeral e = new Evento();//Excluir
-		RepositorioReuniaoList.getInstance().inserirCompromisso(e); //Excluir
-		CompromissoGeral l = new Lembrete();//Excluir
-		RepositorioReuniaoList.getInstance().inserirCompromisso(l); //Excluir
-		CompromissoGeral r = new Reuniao();//Excluir
-		RepositorioReuniaoList.getInstance().inserirCompromisso(r); //Excluir
-		
+		//TESTE
+		CompromissoGeral e = new Evento();
+		e.setAssunto("esse é um evento");
+		RepositorioReuniaoList.getInstance().inserirCompromisso(e); 
+		CompromissoGeral l = new Lembrete();
+		l.setAssunto("esse é um lembrete");
+		RepositorioReuniaoList.getInstance().inserirCompromisso(l); 
+		CompromissoGeral r = new Reuniao();
+		r.setAssunto("essa é uma reunião");
+		RepositorioReuniaoList.getInstance().inserirCompromisso(r); 
+		CompromissoGeral[] c = new CompromissoGeral[RepositorioReuniaoList.getInstance().consultarReuniao(tipoConsulta.DESCRICAO, "é").length];
+		c = RepositorioReuniaoList.getInstance().consultarReuniao(tipoConsulta.DESCRICAO, "é");
+		for (CompromissoGeral compromissoGeral : c) {
+			System.out.println(compromissoGeral.getAssunto());
+		}
+		//TESTE
 	}
 
 	private static void MenuPrincipal() {
