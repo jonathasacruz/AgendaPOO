@@ -35,30 +35,37 @@ public class RepositorioReuniaoList implements InterfaceRepositorio{
 
 
 	@Override
-	public boolean inserirCompromisso(CompromissoGeral compromisso) {
+	public boolean inserirCompromisso(CompromissoGeral compromisso) { //Esses testes tem que sair daqui e ir para o controlador(?)
 		if (compromisso.getClass().getName()==Evento.class.getName()) {
 			return this.eventos.add((Evento) compromisso);
-
-
 		}else if (compromisso.getClass().getName()==Lembrete.class.getName()) {
 			return this.lembretes.add((Lembrete) compromisso);
-
-		}else {
+		}else if (compromisso.getClass().getName()==Reuniao.class.getName()) {
 			return this.reunioes.add((Reuniao) compromisso);
+		}else {
+			return false;
 		}
 
 	}
 
 	@Override
-	public boolean excluirCompromisso(int id) {
+	public boolean excluirCompromisso(CompromissoGeral compromisso) {
+		if (compromisso.getClass().getName()==Evento.class.getName()) {
+			return this.eventos.remove((Evento) compromisso);
 
-		return false;
+		}else if (compromisso.getClass().getName()==Lembrete.class.getName()) {
+			return this.lembretes.remove((Lembrete) compromisso);
+
+		}else if (compromisso.getClass().getName()==Reuniao.class.getName()) {
+			return this.reunioes.remove((Reuniao) compromisso);
+		}else {
+			return false;
+		}
 	}
 
 	@Override
 	public CompromissoGeral[] consultarReuniao(tipoConsulta tipoConsulta, String parametro) {
 		this.temp = new ArrayList<CompromissoGeral>();
-		CompromissoGeral[] retorno;
 
 		if (tipoConsulta == agenda.tipoConsulta.DESCRICAO) {
 			for (Evento evento : eventos) {
@@ -77,33 +84,48 @@ public class RepositorioReuniaoList implements InterfaceRepositorio{
 				}
 			}
 
-		}
-
-		if (temp.isEmpty()) {
-			return null;	
-		}else {
-			retorno = new CompromissoGeral[temp.size()];
-			for (int i = 0; i < temp.size(); i++) {
-				retorno[i] = temp.get(i);
-				
+		}else if(tipoConsulta == agenda.tipoConsulta.DATA) {
+			for (Evento evento : eventos) {
+				if (evento.getDataHoraInicio().toString().contains(parametro)) {
+					temp.add(evento);
+				}
 			}
-			return retorno;
-			
+			for (Lembrete lembrete : lembretes) {
+				if (lembrete.getDataHoraInicio().toString().contains(parametro)) {
+					temp.add(lembrete);
+				}
+			}
+			for (Reuniao reuniao: reunioes) {
+				if (reuniao.getDataHoraInicio().toString().contains(parametro)) {
+					temp.add(reuniao);
+				}
+			}
+
+		}else if(tipoConsulta == agenda.tipoConsulta.PRIORIDADE) {
+			for (Evento evento : eventos) {
+				if (evento.getPrioridade().toString().contains(parametro.toUpperCase())) {
+					temp.add(evento);
+				}
+			}
+			for (Lembrete lembrete : lembretes) {
+				if (lembrete.getPrioridade().toString().contains(parametro.toUpperCase())) {
+					temp.add(lembrete);
+				}
+			}
+			for (Reuniao reuniao : reunioes) {
+				if (reuniao.getPrioridade().toString().contains(parametro.toUpperCase())) {
+					temp.add(reuniao);
+				}
+			}
 		}
+		if (temp.isEmpty()) {
+			return null;
+		}else return (CompromissoGeral[]) temp.toArray();
+
 
 	}
-
-
-
-
-
 
 	@Override
-	public boolean alterarReuniao(int id) {
-		// TODO Auto-generated method stub
+	public boolean alterarReuniao(CompromissoGeral compromisso) {
 		return false;
 	}
-
-
-
-}
