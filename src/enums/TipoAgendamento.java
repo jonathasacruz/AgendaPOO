@@ -1,6 +1,5 @@
 package enums;
-
 public enum TipoAgendamento {
-	REUNIAO, LEMBRENTE, EVENTO, OUTRO;
+	REUNIAO, LEMBRENTE, EVENTO;
 
 }

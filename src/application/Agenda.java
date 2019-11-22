@@ -1,7 +1,6 @@
 package application;
-import java.util.Scanner;
 
-import agenda.tipoConsulta;
+import enums.TipoConsulta;
 import entidade.*;
 import interfaces.InterfaceUsuario;
 import repositorio.RepositorioReuniaoList;
@@ -23,8 +22,8 @@ public class Agenda {
 		CompromissoGeral r = new Reuniao();
 		r.setAssunto("essa é uma reunião");
 		RepositorioReuniaoList.getInstance().inserirCompromisso(r); 
-		CompromissoGeral[] c = new CompromissoGeral[RepositorioReuniaoList.getInstance().consultarReuniao(tipoConsulta.DESCRICAO, "é").length];
-		c = RepositorioReuniaoList.getInstance().consultarReuniao(tipoConsulta.DESCRICAO, "é");
+		CompromissoGeral[] c = new CompromissoGeral[RepositorioReuniaoList.getInstance().consultarReuniao(TipoConsulta.DESCRICAO, "é").length];
+		c = RepositorioReuniaoList.getInstance().consultarReuniao(TipoConsulta.DESCRICAO, "é");
 		for (CompromissoGeral compromissoGeral : c) {
 			System.out.println(compromissoGeral.getAssunto());
 		}
