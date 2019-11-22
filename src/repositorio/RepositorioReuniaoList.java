@@ -1,11 +1,14 @@
 package repositorio;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
-import agenda.tipoConsulta;
-import entidade.*;
+import entidade.CompromissoGeral;
+import entidade.Evento;
+import entidade.Lembrete;
+import entidade.Reuniao;
+import enums.TipoAgendamento;
+import enums.TipoConsulta;
+import enums.TipoPrioridade;
 import interfaces.InterfaceRepositorio;
 
 
@@ -23,6 +26,7 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 		this.eventos = new ArrayList<Evento>();
 		this.lembretes = new ArrayList<Lembrete>();
 		this.reunioes = new ArrayList<Reuniao>();
+		this.temp = new ArrayList<CompromissoGeral>();
 	}
 
 	public static synchronized RepositorioReuniaoList getInstance() {
@@ -35,7 +39,8 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 
 
 	@Override
-	public boolean inserirCompromisso(CompromissoGeral compromisso) { //Esses testes tem que sair daqui e ir para o controlador(?)
+	public boolean inserirCompromisso(TipoAgendamento tipoCompromisso, CompromissoGeral compromisso) {
+		//Esses testes tem que sair daqui e ir para o controlador(?)
 		if (compromisso.getClass().getName() == Evento.class.getName()) {
 			return this.eventos.add((Evento) compromisso);
 		} else if (compromisso.getClass().getName() == Lembrete.class.getName()) {
@@ -49,7 +54,7 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 	}
 
 	@Override
-	public boolean excluirCompromisso(CompromissoGeral compromisso) {
+	public boolean excluirCompromisso(TipoAgendamento tipoAgendamento, CompromissoGeral compromisso) {
 		if (compromisso.getClass().getName() == Evento.class.getName()) {
 			return this.eventos.remove((Evento) compromisso);
 
@@ -64,69 +69,96 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 	}
 
 	@Override
-	public CompromissoGeral[] consultarReuniao(tipoConsulta tipoConsulta, String parametro) {
-		this.temp = new ArrayList<CompromissoGeral>();
+	public CompromissoGeral[] consultarReuniao(TipoConsulta tipoConsulta, String parametro) {
+		this.temp.clear();
 
-		if (tipoConsulta == agenda.tipoConsulta.DESCRICAO) {
-			for (Evento evento : eventos) {
-				if (evento.getAssunto().contains(parametro)) {
-					temp.add(evento);
+		switch (tipoConsulta) {
+			case DATA:
+				for (Evento evento : eventos) {
+					if (evento.getDataHoraInicio().toString().contains(parametro)) {
+						this.temp.add(evento);
+					}
 				}
-			}
-			for (Lembrete lembrete : lembretes) {
-				if (lembrete.getAssunto().contains(parametro)) {
-					temp.add(lembrete);
+				for (Lembrete lembrete : lembretes) {
+					if (lembrete.getDataHoraInicio().toString().contains(parametro)) {
+						this.temp.add(lembrete);
+					}
 				}
-			}
-			for (Reuniao reuniao : reunioes) {
-				if (reuniao.getAssunto().contains(parametro)) {
-					temp.add(reuniao);
+				for (Reuniao reuniao : reunioes) {
+					if (reuniao.getDataHoraInicio().toString().contains(parametro)) {
+						this.temp.add(reuniao);
+					}
 				}
-			}
 
-		} else if (tipoConsulta == agenda.tipoConsulta.DATA) {
-			for (Evento evento : eventos) {
-				if (evento.getDataHoraInicio().toString().contains(parametro)) {
-					temp.add(evento);
+			case PRIORIDADE:
+				for (Evento evento : eventos) {
+					if (evento.getPrioridade().toString().contains(parametro.toUpperCase())) {
+						this.temp.add(evento);
+					}
 				}
-			}
-			for (Lembrete lembrete : lembretes) {
-				if (lembrete.getDataHoraInicio().toString().contains(parametro)) {
-					temp.add(lembrete);
+				for (Lembrete lembrete : lembretes) {
+					if (lembrete.getPrioridade().toString().contains(parametro.toUpperCase())) {
+						this.temp.add(lembrete);
+					}
 				}
-			}
-			for (Reuniao reuniao : reunioes) {
-				if (reuniao.getDataHoraInicio().toString().contains(parametro)) {
-					temp.add(reuniao);
+				for (Reuniao reuniao : reunioes) {
+					if (reuniao.getPrioridade().toString().contains(parametro.toUpperCase())) {
+						this.temp.add(reuniao);
+					}
 				}
-			}
+				break;
+			case DESCRICAO:
+				for (Evento evento : eventos) {
+					if (evento.getAssunto().contains(parametro)) {
+						this.temp.add(evento);
+					}
+				}
+				for (Lembrete lembrete : lembretes) {
+					if (lembrete.getAssunto().contains(parametro)) {
+						this.temp.add(lembrete);
+					}
+				}
+				for (Reuniao reuniao : reunioes) {
+					if (reuniao.getAssunto().contains(parametro)) {
+						this.temp.add(reuniao);
+					}
+				}
+				break;
 
-		} else if (tipoConsulta == agenda.tipoConsulta.PRIORIDADE) {
-			for (Evento evento : eventos) {
-				if (evento.getPrioridade().toString().contains(parametro.toUpperCase())) {
-					temp.add(evento);
-				}
-			}
-			for (Lembrete lembrete : lembretes) {
-				if (lembrete.getPrioridade().toString().contains(parametro.toUpperCase())) {
-					temp.add(lembrete);
-				}
-			}
-			for (Reuniao reuniao : reunioes) {
-				if (reuniao.getPrioridade().toString().contains(parametro.toUpperCase())) {
-					temp.add(reuniao);
-				}
-			}
+			default:
+				return null;
 		}
-		if (temp.isEmpty()) {
-			return null;
-		} else return (CompromissoGeral[]) temp.toArray();
 
+		if (this.temp.isEmpty()){
+			return null;
+		}else {
+			return (CompromissoGeral[]) this.temp.toArray();
+		}
 
 	}
-
 	@Override
-	public boolean alterarReuniao(CompromissoGeral compromisso) {
+	public boolean alterarReuniao(TipoAgendamento tipoAgendamento, CompromissoGeral compromisso, int id) {
+		switch (tipoAgendamento) {
+			case REUNIAO:
+				this.reunioes.add(id, (Reuniao) compromisso);
+				return this.reunioes.contains(compromisso);
+
+				break;
+			case LEMBRENTE:
+				this.lembretes.add(id, (Lembrete) compromisso);
+				return this.lembretes.contains(compromisso);
+
+				break;
+			case EVENTO:
+				this.eventos.add(id, (Evento) compromisso);
+				return this.eventos.contains(compromisso);
+
+				break;
+
+			default:
+				throw new IllegalStateException("Unexpected value: " + tipoAgendamento);
+		}
+
 		return false;
 	}
 }

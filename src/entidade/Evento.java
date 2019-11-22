@@ -1,9 +1,11 @@
 package entidade;
 
+import java.util.List;
+
 public class Evento extends CompromissoGeral{
 	Calendario dataHoraFim;
 	Endereco local;
-	Contato[] participantes;
+	List<Contato> participantes;
 	public Calendario getDataHoraFim() {
 		return dataHoraFim;
 	}
@@ -17,10 +19,17 @@ public class Evento extends CompromissoGeral{
 		this.local = local;
 	}
 	public Contato[] getParticipantes() {
-		return participantes;
+		return (Contato[])participantes.toArray();
 	}
-	public void setParticipantes(Contato[] participantes) {
-		this.participantes = participantes;
+	public void setParticipantes(Contato participantes) {
+		this.participantes.add(participantes);
 	}
-	
+
+
+	public Evento() {
+		super();
+		this.dataHoraFim = new Calendario();
+		this.local = new Endereco();
+		this.participantes = null;
+	}
 }

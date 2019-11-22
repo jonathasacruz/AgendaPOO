@@ -8,6 +8,11 @@ public abstract class CompromissoGeral {
 	String assunto;
 	Boolean alarmeAtivo;
 	TipoPrioridade prioridade;
+	int id;
+
+
+
+
 	public Calendario getDataHoraInicio() {
 		return dataHoraInicio;
 	}
@@ -38,6 +43,28 @@ public abstract class CompromissoGeral {
 	public void setPrioridade(TipoPrioridade prioridade) {
 		this.prioridade = prioridade;
 	}
-	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public CompromissoGeral(Calendario dataHoraInicio, Calendario alarme, String assunto, Boolean alarmeAtivo, TipoPrioridade prioridade, int id) {
+		this.dataHoraInicio = dataHoraInicio;
+		this.alarme = alarme;
+		this.assunto = assunto;
+		this.alarmeAtivo = alarmeAtivo;
+		this.prioridade = prioridade;
+		this.id = id;
+	}
+
+	public CompromissoGeral() {
+		this.dataHoraInicio = new Calendario();
+		this.alarme = null;
+		this.assunto = "";
+		this.alarmeAtivo = false;
+		this.prioridade = TipoPrioridade.MÉDIA;
+		this.id = 0;
+	}
 }
