@@ -69,7 +69,7 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 	}
 
 	@Override
-	public CompromissoGeral[] consultarReuniao(TipoConsulta tipoConsulta, String parametro) {
+	public CompromissoGeral[] consultarCompromisso(TipoConsulta tipoConsulta, String parametro) {
 		this.temp.clear();
 
 		switch (tipoConsulta) {
@@ -137,7 +137,7 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 
 	}
 	@Override
-	public boolean alterarReuniao(TipoAgendamento tipoAgendamento, CompromissoGeral compromisso, int id) {
+	public boolean alterarCompromisso(TipoAgendamento tipoAgendamento, CompromissoGeral compromisso, int id) {
 		switch (tipoAgendamento) {
 			case REUNIAO:
 				this.reunioes.add(id, (Reuniao) compromisso);
