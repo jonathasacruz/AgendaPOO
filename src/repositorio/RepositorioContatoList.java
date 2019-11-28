@@ -1,9 +1,7 @@
 package repositorio;
+
 import java.util.ArrayList;
-
-
 import entidade.*;
-import enums.TipoConsulta;
 import interfaces.InterfaceRepositorioContato;
 
 
@@ -20,12 +18,26 @@ public class RepositorioContatoList implements InterfaceRepositorioContato {
 
 	}
 
-	public static synchronized RepositorioContatoList getInstance() {
+	public static RepositorioContatoList getInstance() {
+		if (instance == null) {
+			synchronized (RepositorioContatoList.class) {
+				if (instance == null) {
+					instance = new RepositorioContatoList();
+
+				}
+			}
+		}
+		return instance;
+	}
+	
+	/*
+	   public static synchronized RepositorioContatoList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioContatoList();
 		}
 		return instance;
 	}
+	*/
 
 	@Override
 	public boolean inserirContato(Contato contato) {

@@ -1,7 +1,6 @@
 package repositorio;
 
 import java.util.ArrayList;
-
 import entidade.CompromissoGeral;
 import entidade.Lembrete;
 import enums.TipoConsulta;
@@ -19,13 +18,26 @@ public class RepositorioLembreteList implements InterfaceRepositorio {
 		this.temp = new ArrayList<Object>();
 
 	}
+	
+	public static RepositorioLembreteList getInstance() {
+		if (instance == null) {
+			synchronized (RepositorioLembreteList.class) {
+				if (instance == null) {
+					instance = new RepositorioLembreteList();
 
-	public static synchronized RepositorioLembreteList getInstance() {
+				}
+			}
+		}
+		return instance;
+	}
+
+	/*public static synchronized RepositorioLembreteList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioLembreteList();
 		}
 		return instance;
 	}
+	*/
 
 	@Override
 	public boolean inserirCompromisso(CompromissoGeral compromisso) {
