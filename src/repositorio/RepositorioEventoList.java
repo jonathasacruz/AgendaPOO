@@ -21,7 +21,7 @@ public class RepositorioEventoList implements InterfaceRepositorio {
 
 	}
 
-	public static synchronized RepositorioEventoList getInstance() {
+	public synchronized static RepositorioEventoList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioEventoList();
 		}
@@ -30,13 +30,15 @@ public class RepositorioEventoList implements InterfaceRepositorio {
 
 	@Override
 	public boolean inserirCompromisso(CompromissoGeral compromisso) {
-		return this.eventos.add((Evento) compromisso);
+		this.eventos.add((Evento) compromisso);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirCompromisso(CompromissoGeral compromisso) {
-		return this.eventos.remove((Evento)compromisso);
+		 this.eventos.remove((Evento)compromisso);
+		 return true;
 	}
 
 	@Override

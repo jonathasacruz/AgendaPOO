@@ -30,13 +30,15 @@ public class RepositorioReuniaoList implements InterfaceRepositorio {
 
 	@Override
 	public boolean inserirCompromisso(CompromissoGeral compromisso) {
-		return this.reunioes.add((Reuniao) compromisso);
+		this.reunioes.add((Reuniao) compromisso);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirCompromisso(CompromissoGeral compromisso) {
-		return this.reunioes.remove((Reuniao)compromisso);
+		this.reunioes.remove((Reuniao)compromisso);
+		return true;
 	}
 
 	@Override

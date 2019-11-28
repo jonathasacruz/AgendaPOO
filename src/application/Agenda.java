@@ -4,7 +4,6 @@ import enums.TipoConsulta;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import entidade.*;
 import interfaces.InterfaceUsuario;
 import repositorio.RepositorioEventoList;

@@ -1,8 +1,5 @@
 package interfaces;
-
-
 import enums.TipoConsulta;
-
 import java.util.ArrayList;
 
 import entidade.*;
