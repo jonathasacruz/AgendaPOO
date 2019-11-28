@@ -51,13 +51,13 @@ public class RepositorioContatoList implements InterfaceRepositorioContato {
 	}
 
 	@Override
-	public int obterIndex(CompromissoGeral compromisso) {
-		return this.eventos.indexOf(compromisso); 
+	public int obterIndex(Contato contato) {
+		return this.contatos.indexOf(contato);
 	}
 	@Override
-	public boolean alterarCompromisso(int index, CompromissoGeral compromisso) {
-		this.eventos.remove(index);
-		this.eventos.add(index, (Evento) compromisso);
-		return this.eventos.contains(compromisso);
+	public boolean alterarContato(int index, Contato contato) {
+		this.contatos.remove(index);
+		this.contatos.add(index, (Contato) contato);
+		return this.contatos.contains(contato);
 	}
 }
