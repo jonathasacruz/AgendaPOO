@@ -41,13 +41,15 @@ public class RepositorioContatoList implements InterfaceRepositorioContato {
 
 	@Override
 	public boolean inserirContato(Contato contato) {
-		return this.contatos.add(contato);
+		this.contatos.add(contato);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirContato(Contato contato) {
-		return this.contatos.remove(contato);
+		this.contatos.remove(contato);
+		return true;
 	}
 
 	@Override
