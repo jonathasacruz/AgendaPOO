@@ -1,9 +1,7 @@
 package repositorio;
+
 import java.util.ArrayList;
-
-
 import entidade.*;
-import enums.TipoConsulta;
 import interfaces.InterfaceRepositorioContato;
 
 
@@ -20,22 +18,38 @@ public class RepositorioContatoList implements InterfaceRepositorioContato {
 
 	}
 
-	public static synchronized RepositorioContatoList getInstance() {
+	public static RepositorioContatoList getInstance() {
+		if (instance == null) {
+			synchronized (RepositorioContatoList.class) {
+				if (instance == null) {
+					instance = new RepositorioContatoList();
+
+				}
+			}
+		}
+		return instance;
+	}
+	
+	/*
+	   public static synchronized RepositorioContatoList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioContatoList();
 		}
 		return instance;
 	}
+	*/
 
 	@Override
 	public boolean inserirContato(Contato contato) {
-		return this.contatos.add(contato);
+		this.contatos.add(contato);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirContato(Contato contato) {
-		return this.contatos.remove(contato);
+		this.contatos.remove(contato);
+		return true;
 	}
 
 	@Override
@@ -51,13 +65,13 @@ public class RepositorioContatoList implements InterfaceRepositorioContato {
 	}
 
 	@Override
-	public int obterIndex(CompromissoGeral compromisso) {
-		return this.eventos.indexOf(compromisso); 
+	public int obterIndex(Contato contato) {
+		return this.contatos.indexOf(contato);
 	}
 	@Override
-	public boolean alterarCompromisso(int index, CompromissoGeral compromisso) {
-		this.eventos.remove(index);
-		this.eventos.add(index, (Evento) compromisso);
-		return this.eventos.contains(compromisso);
+	public boolean alterarContato(int index, Contato contato) {
+		this.contatos.remove(index);
+		this.contatos.add(index, (Contato) contato);
+		return this.contatos.contains(contato);
 	}
 }

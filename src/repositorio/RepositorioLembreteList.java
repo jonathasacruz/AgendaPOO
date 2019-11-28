@@ -1,12 +1,10 @@
 package repositorio;
+
 import java.util.ArrayList;
-
-
 import entidade.CompromissoGeral;
 import entidade.Lembrete;
 import enums.TipoConsulta;
 import interfaces.InterfaceRepositorio;
-
 
 public class RepositorioLembreteList implements InterfaceRepositorio {
 
@@ -20,23 +18,38 @@ public class RepositorioLembreteList implements InterfaceRepositorio {
 		this.temp = new ArrayList<Object>();
 
 	}
+	
+	public static RepositorioLembreteList getInstance() {
+		if (instance == null) {
+			synchronized (RepositorioLembreteList.class) {
+				if (instance == null) {
+					instance = new RepositorioLembreteList();
 
-	public static synchronized RepositorioLembreteList getInstance() {
+				}
+			}
+		}
+		return instance;
+	}
+
+	/*public static synchronized RepositorioLembreteList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioLembreteList();
 		}
 		return instance;
 	}
+	*/
 
 	@Override
 	public boolean inserirCompromisso(CompromissoGeral compromisso) {
-		return this.lembretes.add((Lembrete) compromisso);
+		this.lembretes.add((Lembrete) compromisso);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirCompromisso(CompromissoGeral compromisso) {
-		return this.lembretes.remove((Lembrete)compromisso);
+		this.lembretes.remove((Lembrete) compromisso);
+		return true;
 	}
 
 	@Override
@@ -48,6 +61,7 @@ public class RepositorioLembreteList implements InterfaceRepositorio {
 			for (Lembrete lembrete : lembretes) {
 				if (lembrete.getDataHoraInicio().toString().contains(parametro)) {
 					this.temp.add(lembrete);
+
 				}
 			}
 			return temp;
@@ -75,8 +89,9 @@ public class RepositorioLembreteList implements InterfaceRepositorio {
 
 	@Override
 	public int obterIndex(CompromissoGeral compromisso) {
-		return this.lembretes.indexOf(compromisso); 
+		return this.lembretes.indexOf(compromisso);
 	}
+
 	@Override
 	public boolean alterarCompromisso(int index, CompromissoGeral compromisso) {
 		this.lembretes.remove(index);

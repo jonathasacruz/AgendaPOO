@@ -1,7 +1,6 @@
 package repositorio;
+
 import java.util.ArrayList;
-
-
 import entidade.CompromissoGeral;
 import entidade.Evento;
 import enums.TipoConsulta;
@@ -20,23 +19,38 @@ public class RepositorioEventoList implements InterfaceRepositorio {
 		this.temp = new ArrayList<Object>();
 
 	}
+	
+	public static RepositorioEventoList getInstance() {
+		if (instance == null) {
+			synchronized (RepositorioEventoList.class) {
+				if (instance == null) {
+					instance = new RepositorioEventoList();
 
-	public static synchronized RepositorioEventoList getInstance() {
+				}
+			}
+		}
+		return instance;
+	}
+
+	/*public synchronized static RepositorioEventoList getInstance() {
 		if (instance == null) {
 			instance = new RepositorioEventoList();
 		}
 		return instance;
 	}
+	*/
 
 	@Override
 	public boolean inserirCompromisso(CompromissoGeral compromisso) {
-		return this.eventos.add((Evento) compromisso);
+		this.eventos.add((Evento) compromisso);
+		return true;
 
 	}
 
 	@Override
 	public boolean excluirCompromisso(CompromissoGeral compromisso) {
-		return this.eventos.remove((Evento)compromisso);
+		 this.eventos.remove((Evento)compromisso);
+		 return true;
 	}
 
 	@Override

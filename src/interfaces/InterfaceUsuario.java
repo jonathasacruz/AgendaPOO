@@ -7,7 +7,7 @@ public interface InterfaceUsuario {
 	public int ConstruirMenu (String opcoesMenu[]);
 	
 	public int ConstruirMenuAgendamento (String opcoesMenuAgendamento[]);
-	public void ConstruirMenuConsulta (String opcoesMenuConsulta[]);
+	public int ConstruirMenuConsulta (String opcoesMenuConsulta[]);
 	public void ConstruirMenuListar (String opcoesMenuListar[]);
 	public void ConstruirMenuCancelar (String opcoesMenuCancelar[]);
 	public void exibirMensagem(String msg, Mensagem mensagem);
