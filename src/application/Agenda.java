@@ -1,9 +1,14 @@
 package application;
 
 import enums.TipoConsulta;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import entidade.*;
 import interfaces.InterfaceUsuario;
-import repositorio.RepositorioReuniaoList;
+import repositorio.RepositorioEventoList;
+
 
 public class Agenda {
 
@@ -13,19 +18,27 @@ public class Agenda {
 	public static void main(String[] args) {
 	//	MenuPrincipal();
 		//TESTE
-		CompromissoGeral e = new Evento();
-		e.setAssunto("esse é um evento");
-		RepositorioReuniaoList.getInstance().inserirCompromisso(e); 
-		CompromissoGeral l = new Lembrete();
-		l.setAssunto("esse é um lembrete");
-		RepositorioReuniaoList.getInstance().inserirCompromisso(l); 
-		CompromissoGeral r = new Reuniao();
-		r.setAssunto("essa é uma reunião");
-		RepositorioReuniaoList.getInstance().inserirCompromisso(r); 
-		CompromissoGeral[] c = new CompromissoGeral[RepositorioReuniaoList.getInstance().consultarCompromisso(TipoConsulta.DESCRICAO, "é").length];
-		c = RepositorioReuniaoList.getInstance().consultarCompromisso(TipoConsulta.DESCRICAO, "é");
-		for (CompromissoGeral compromissoGeral : c) {
-			System.out.println(compromissoGeral.getAssunto());
+		Evento eventoTeste = new Evento();
+		Endereco endereco = new Endereco();
+		Calendario dataFim = new Calendario(2020, 2, 2, 2, 2);
+		ArrayList<Object> varRetornoTeste = new ArrayList<Object>();
+		
+		eventoTeste.setAssunto("essa é uma Descrição do evento");
+		endereco.setDescricao("Endereco teste");
+		eventoTeste.setLocal(endereco);
+		eventoTeste.setDataHoraFim(dataFim);
+		
+		RepositorioEventoList.getInstance().inserirCompromisso(eventoTeste); 
+		varRetornoTeste = RepositorioEventoList.getInstance().consultarCompromisso(TipoConsulta.DESCRICAO, "é");
+		
+		for (Iterator iterator = varRetornoTeste.iterator(); iterator.hasNext();) {
+			Object object = (Object) iterator.next();
+			eventoTeste = (Evento)object;
+			System.out.println(eventoTeste.getAssunto());
+			System.out.println(eventoTeste.getDataHoraFim());
+				
+		
+			
 		}
 		//TESTE
 	}

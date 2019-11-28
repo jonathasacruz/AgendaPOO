@@ -13,8 +13,8 @@ public abstract class CompromissoGeral {
 
 
 
-	public Calendario getDataHoraInicio() {
-		return dataHoraInicio;
+	public String getDataHoraInicio() {
+		return dataHoraInicio.getDataHora();
 	}
 	public void setDataHoraInicio(Calendario dataHoraInicio) {
 		this.dataHoraInicio = dataHoraInicio;

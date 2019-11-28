@@ -3,11 +3,12 @@ package entidade;
 import java.util.List;
 
 public class Evento extends CompromissoGeral{
-	Calendario dataHoraFim;
-	Endereco local;
-	List<Contato> participantes;
-	public Calendario getDataHoraFim() {
-		return dataHoraFim;
+	private Calendario dataHoraFim;
+	private Endereco local;
+	private List<Contato> participantes;
+	
+	public String getDataHoraFim() {
+		return dataHoraFim.getDataHora();
 	}
 	public void setDataHoraFim(Calendario dataHoraFim) {
 		this.dataHoraFim = dataHoraFim;
